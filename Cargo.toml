@@ -1,0 +1,11 @@
+[package]
+name = "area_crate"
+version = "0.1.1"
+edition = "2021"
+authors = ["Akshit"]
+description = "Basic Area function"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
