@@ -1,104 +1,141 @@
-# Basic Area Crate
+# Area Crate v1.0.0
 
-This is a collection of some generally used area functions.
+A comprehensive Rust library for geometric calculations, providing functions for calculating areas, perimeters, surface areas, and volumes of various shapes.
 
-## Find the Area
+## Features
 
-### Example
+- 2D shape area calculations (circle, triangle, square, rectangle, trapezoid, parallelogram, ellipse, etc.)
+- 3D shape surface area calculations (cube, sphere, cylinder, cone)
+- 3D shape volume calculations
+- Perimeter calculations for 2D shapes
+- Error handling for invalid inputs
+- High-precision mathematical constants
+- Well-documented API
+- Zero dependencies
 
-#### Area of Circle
-```rust
-let radius = 12.0;
-let answer = area_crate::area::circle(radius);
-assert_eq!(452.38934211696005, answer);
+## Installation
+
+Add this to your `Cargo.toml`:
+
+```toml
+[dependencies]
+area_crate = "1.0.0"
 ```
 
-## Functions
+## Usage Examples
 
-### Circle Area
+### Area Calculations
+
 ```rust
-pub fn circle(radius: f64) -> f64 {
-    let pi = 3.14159265359;
-    pi * radius * radius
+use area_crate::area;
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Calculate circle area
+    let radius = 12.0;
+    let circle_area = area::circle(radius)?;
+    assert_eq!(452.38934211696005, circle_area);
+
+    // Calculate pentagon area
+    let pentagon_area = area::pentagon(10.0)?;
+    println!("Pentagon area: {}", pentagon_area);
+
+    // Calculate polygon area (hexagon)
+    let hexagon_area = area::polygon(6, 10.0)?;
+    println!("Hexagon area: {}", hexagon_area);
+
+    Ok(())
 }
 ```
 
-### Triangle Area
+### Surface Area and Volume Calculations
+
 ```rust
-pub fn triangle(base: f64, height: f64) -> f64 {
-    0.5 * base * height
+use area_crate::{surface_area, volume};
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Calculate sphere surface area
+    let radius = 5.0;
+    let surface = surface_area::sphere(radius)?;
+    println!("Sphere surface area: {}", surface);
+
+    // Calculate cylinder volume
+    let height = 10.0;
+    let volume = volume::cylinder(radius, height)?;
+    println!("Cylinder volume: {}", volume);
+
+    Ok(())
 }
 ```
 
-### Rectangle Area
+### Using Constants
+
 ```rust
-pub fn rectangle(length: f64, breadth: f64) -> f64 {
-    length * breadth
+use area_crate::constants::{PI, TAU, E};
+
+fn main() {
+    println!("π = {}", PI);
+    println!("τ = {}", TAU);
+    println!("e = {}", E);
 }
 ```
 
-### Square Area
+## Available Functions
+
+### Areas (2D)
+
+- Circle
+- Triangle
+- Square
+- Rectangle
+- Trapezoid
+- Parallelogram
+- Ellipse
+- Sector
+- Rhombus
+- Kite
+- Regular polygon
+- Annulus
+- Pentagon
+- Hexagon
+- N-sided polygon
+- Circular segment
+
+### Perimeters
+
+- Circle
+- Rectangle
+- Triangle
+- Regular polygon
+
+### Surface Areas (3D)
+
+- Cube
+- Sphere
+- Cylinder
+- Cone
+
+### Volumes (3D)
+
+- Cube
+- Sphere
+- Cylinder
+- Cone
+- Rectangular prism
+
+## Error Handling
+
+All functions now return a `Result` type, properly handling invalid inputs:
+
 ```rust
-pub fn square(side: f64) -> f64 {
-    side * side
+use area_crate::area;
+
+fn main() {
+    // This will return an error because radius cannot be negative
+    let result = area::circle(-5.0);
+    assert!(result.is_err());
 }
 ```
 
-### Parallelogram Area
-```rust
-pub fn parallelogram(base: f64, height: f64) -> f64 {
-    base * height
-}
-```
+## License
 
-### Trapezoid Area
-```rust
-pub fn trapezoid(base1: f64, base2: f64, height: f64) -> f64 {
-    0.5 * (base1 + base2) * height
-}
-```
-
-### Ellipse Area
-```rust
-pub fn ellipse(major_axis: f64, minor_axis: f64) -> f64 {
-    let pi = 3.14159265359;
-    pi * major_axis * minor_axis
-}
-```
-
-### Sector Area
-```rust
-pub fn sector(radius: f64, angle: f64) -> f64 {
-    let pi = 3.14159265359;
-    0.5 * radius * radius * angle.to_radians()
-}
-```
-
-### Rhombus Area
-```rust
-pub fn rhombus(diagonal1: f64, diagonal2: f64) -> f64 {
-    0.5 * diagonal1 * diagonal2
-}
-```
-
-### Kite Area
-```rust
-pub fn kite(diagonal1: f64, diagonal2: f64) -> f64 {
-    0.5 * diagonal1 * diagonal2
-}
-```
-
-### Regular Polygon Area
-```rust
-pub fn regular_polygon(perimeter: f64, apothem: f64) -> f64 {
-    0.5 * perimeter * apothem
-}
-```
-
-### Annulus Area
-```rust
-pub fn annulus(outer_radius: f64, inner_radius: f64) -> f64 {
-    let pi = 3.14159265359;
-    pi * (outer_radius * outer_radius - inner_radius * inner_radius)
-}
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details
