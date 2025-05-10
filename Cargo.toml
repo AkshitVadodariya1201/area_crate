@@ -1,6 +1,6 @@
 [package]
 name = "area_crate"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 authors = ["Akshit"]
 description = "A comprehensive geometry calculation library for areas, perimeters, surface areas, and volumes"
