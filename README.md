@@ -27,13 +27,13 @@ area_crate = "1.0.0"
 ### Area Calculations
 
 ```rust
-use area_crate::area;
+use area_crate::{area, GeometryError};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), GeometryError> {
     // Calculate circle area
     let radius = 12.0;
     let circle_area = area::circle(radius)?;
-    assert_eq!(452.38934211696005, circle_area);
+    assert_eq!(452.3893421169302, circle_area);
 
     // Calculate pentagon area
     let pentagon_area = area::pentagon(10.0)?;
@@ -50,9 +50,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ### Surface Area and Volume Calculations
 
 ```rust
-use area_crate::{surface_area, volume};
+use area_crate::{surface_area, volume, GeometryError};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), GeometryError> {
     // Calculate sphere surface area
     let radius = 5.0;
     let surface = surface_area::sphere(radius)?;
