@@ -1,4 +1,4 @@
-# Area Crate v1.0.0
+# Area Crate v1.0.2
 
 A comprehensive Rust library for geometric calculations, providing functions for calculating areas, perimeters, surface areas, and volumes of various shapes.
 
@@ -19,7 +19,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-area_crate = "1.0.0"
+area_crate = "1.0.2"
 ```
 
 ## Usage Examples
